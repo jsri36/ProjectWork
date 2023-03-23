@@ -17,15 +17,15 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 public class ExcelReader {
 
 	public static int totalRow;
-	Workbook workbook;
+//	Workbook workbook;
 	public List<Map<String, String>> getData(String excelFilePath, String sheetName)
 			throws InvalidFormatException, IOException {
 
-//		Workbook workbook = WorkbookFactory.create(new File(excelFilePath));
+		Workbook workbook = WorkbookFactory.create(new File(excelFilePath));
 		workbook = WorkbookFactory.create(new File(excelFilePath));
 		System.out.println("Excel File Path" +excelFilePath );
 		Sheet sheet = workbook.getSheet(sheetName);
-//		workbook.close();
+		workbook.close();
 		return readSheet(sheet);
 	}
 
@@ -58,7 +58,7 @@ public class ExcelReader {
 
 			excelRows.add(columnMapdata);
 		}
-		workbook.close();
+//		workbook.close();
 		return excelRows;
 	}
 
